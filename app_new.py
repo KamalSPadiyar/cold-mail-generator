@@ -13,8 +13,7 @@ load_dotenv()
 
 def add_custom_css():
     """Add custom CSS for professional styling"""
-    st.markdown("""
-    <style>    /* Main app styling */
+    st.markdown("""    <style>    /* Main app styling with light background */
     .stApp {
         background: #f8f9fa;
     }
@@ -24,9 +23,10 @@ def add_custom_css():
         background: white;
         padding: 2rem;
         border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         margin-bottom: 2rem;
         text-align: center;
+        border: 1px solid #e9ecef;
     }
     
     .main-title {
@@ -34,13 +34,13 @@ def add_custom_css():
         font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
-        background: linear-gradient(135deg, #667eea, #764ba2);
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
     
     .subtitle {
-        color: #7f8c8d;
+        color: #6b7280;
         font-size: 1.2rem;
         margin-bottom: 1rem;
     }
@@ -50,8 +50,9 @@ def add_custom_css():
         background: white;
         padding: 2rem;
         border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         margin-bottom: 2rem;
+        border: 1px solid #e5e7eb;
     }
     
     /* Results container */
@@ -59,31 +60,87 @@ def add_custom_css():
         background: white;
         padding: 2rem;
         border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         margin-top: 2rem;
+        border: 1px solid #e5e7eb;
+    }
+    
+    /* Job search results */
+    .job-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        transition: all 0.3s ease;
+    }
+    
+    .job-card:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+    }
+    
+    .job-title {
+        color: #1f2937;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .job-company {
+        color: #4f46e5;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+    
+    .job-location {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .job-link {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        color: white !important;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: inline-block;
+        transition: all 0.2s ease;
+    }
+    
+    .job-link:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        text-decoration: none;
+        color: white !important;
     }
     
     /* Progress text */
     .progress-text {
-        color: #7f8c8d;
+        color: #6b7280;
         font-style: italic;
         margin-top: 0.5rem;
     }
     
     /* Email output styling */
     .email-output {
-        background: #f8f9fa;
-        border-left: 4px solid #667eea;
+        background: #f8fafc;
+        border-left: 4px solid #4f46e5;
         padding: 1.5rem;
         border-radius: 8px;
         font-family: 'Courier New', monospace;
         line-height: 1.6;
         margin: 1rem 0;
+        border: 1px solid #e5e7eb;
     }
     
     /* Download link styling */
     .download-link {
-        background: linear-gradient(135deg, #667eea, #764ba2);
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
         color: white !important;
         padding: 0.5rem 1rem;
         border-radius: 25px;
@@ -91,33 +148,125 @@ def add_custom_css():
         display: inline-block;
         margin-top: 1rem;
         transition: transform 0.2s;
+        font-weight: 500;
     }
     
     .download-link:hover {
         transform: translateY(-2px);
         text-decoration: none;
         color: white !important;
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
     }
     
     /* Button styling */
     .stButton > button {
-        background: linear-gradient(135deg, #667eea, #764ba2);
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
         color: white;
         border: none;
         border-radius: 25px;
         padding: 0.75rem 2rem;
         font-weight: 600;
-        transition: transform 0.2s;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
     }
     
     .stButton > button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    }
+    
+    /* Input field styling */
+    .stTextInput > div > div > input {
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .stTextInput > div > div > input:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+    
+    .stSelectbox > div > div > select {
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+    }
+    
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 0.5rem 1rem;
+        color: #6b7280;
+        font-weight: 500;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        color: white;
+        border-color: transparent;
     }
     
     /* Hide Streamlit elements */
     footer {visibility: hidden;}
     header {visibility: hidden;}
+    
+    /* Copy button styling */
+    .copy-button {
+        background: linear-gradient(135deg, #10b981, #059669) !important;
+        color: white !important;
+        border: none !important;
+        padding: 8px 16px !important;
+        border-radius: 20px !important;
+        cursor: pointer !important;
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        transition: all 0.2s ease !important;
+        margin: 4px 0 !important;
+    }
+    
+    .copy-button:hover {
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+    }
+    
+    .copy-success {
+        background: linear-gradient(135deg, #059669, #047857) !important;
+    }
+    
+    /* Job summary section styling */
+    .job-summary {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .job-summary h3 {
+        color: #1e293b;
+        margin-bottom: 1rem;
+    }
+    
+    .job-link-item {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        transition: all 0.2s ease;
+    }
+    
+    .job-link-item:hover {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* ...existing code... */
     </style>
     """, unsafe_allow_html=True)
 
