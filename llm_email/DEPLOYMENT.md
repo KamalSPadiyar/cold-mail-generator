@@ -66,7 +66,7 @@
    - Click "Secrets" tab
    - Add your secrets in TOML format:
    ```toml
-   GROQ_API_KEY = "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"
+   GROQ_API_KEY = "Your Key"
    ```
    - Click "Save"
 
